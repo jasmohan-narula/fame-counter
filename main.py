@@ -43,6 +43,30 @@ def get_instagram_followers(instagram_handle):
     print("Instgram Followers for @" + instagram_handle + ": " + insta_follower_count)
 
     return insta_follower_count
+
+#if(properties.instagram_handle != None):
+    #get_instagram_followers(properties.instagram_handle)
+
+
+
+def get_twitter_followers(twitter_handle):
+    url = 'https://www.speakrj.com/audit/report/' + twitter_handle + '/twitter'
+
+    twitter_stats_page = requests.get(url)
+    twitter_stats_page_text = twitter_stats_page.text
+
+    start = twitter_stats_page_text.find('label: "Followers",')
+    end = start + 100
+
+    followers_text = twitter_stats_page_text[start:end]
+
+    start=followers_text.find('["') + 2
+    end=followers_text.find('"]')
+
+    followers_count_string=followers_text[start:end]
     
-if(properties.instagram_handle != None):
-    get_instagram_followers(properties.instagram_handle)
+    print("Twitter Followers for @" + twitter_handle + ": " + followers_count_string)
+
+
+if(properties.twitter_handle != None):
+    get_twitter_followers(properties.twitter_handle)

@@ -3,7 +3,6 @@ import requests
 import json
 from bs4 import BeautifulSoup
 from lxml import etree,html
-from instaloader import Instaloader, Profile
 
 # Import files
 import properties
